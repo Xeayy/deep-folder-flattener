@@ -1,6 +1,12 @@
 # Deep Folder Flattener · 深层子文件夹文件一键提取平铺工具
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows%2010%20%2F%2011-0078D6.svg)](#环境要求)
+[![Python](https://img.shields.io/badge/python-3.8%2B-3776AB.svg)](#环境要求)
+
 一个 Windows 桌面小工具：把多层嵌套文件夹里的文件**一键剪切到根目录摊平**，重名自动改名不覆盖，顺手清理被掏空的子目录。
+
+A Windows desktop utility that flattens deeply nested folders — move every file to the root directory in one click, auto-rename duplicates instead of overwriting, and clean up emptied subdirectories. Built with Python 3 + tkinter, standard library only.
 
 面向需要频繁处理素材包、下载目录、归档文件夹的场景（电商素材、设计稿件、会议资料等）。单文件 exe，免安装、不联网。
 
@@ -86,6 +92,18 @@ pyinstaller --noconfirm --clean --onefile --windowed ^
 | v1.2.0 | 补全交付文档；示例目录；稳定性修复 |
 | v1.1.0 | 重名保护、空目录清理、隐藏项选项 |
 
-## 作者
+## 许可证
 
-Ilana · 仅用于个人与内部工作场景，未经授权请勿分发。
+本项目基于 [MIT License](LICENSE) 开源发布，可自由使用、修改、分发与商用，保留版权与许可声明即可。
+
+## 贡献
+
+欢迎提交 Issue 反馈问题，或 Pull Request 改进功能。提交前请确保：
+
+- 保持零第三方运行依赖（仅 Python 标准库）
+- 改动集中在 `main.py`，并在 PR 描述中说明动机与测试方式
+- 涉及文件移动的逻辑，请补充手动验证步骤（含重名、权限不足、隐藏文件等边界场景）
+
+## 致谢
+
+感谢所有提交 Issue 与建议的使用者。
