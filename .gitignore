@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+
+# PyInstaller
+build/
+dist/
+dist_*/
+*.spec
+
+# 本地开发辅助（不纳入版本管理）
+demo_shot.py
+capture_ui.py
+smoke_test_dragdrop.py
+make_icon.py
+icon_raw.png
+icon_clean.png
+icon_preview_strip.png
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
