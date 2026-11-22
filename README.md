@@ -9,9 +9,15 @@
 
 A Windows desktop utility that flattens deeply nested folders: move every file from subdirectories into the root folder in one click, auto-rename name collisions instead of overwriting, and clean up the emptied subdirectories.
 
-Built with Python 3 and tkinter — **standard library only**, no third-party dependencies, no network access.
+Built with Python 3 and tkinter — **standard library only**, no third-party dependencies, no network access. The interface is available in **Chinese and English**.
 
-![Screenshot](docs/screenshot.png)
+<p align="center">
+  <img src="docs/icon.png" width="96" alt="Deep Folder Flattener icon">
+</p>
+
+| 中文界面 | English UI |
+|---|---|
+| ![中文界面](docs/screenshot-zh.png) | ![English UI](docs/screenshot-en.png) |
 
 ## Why
 
@@ -27,6 +33,7 @@ Material packs, downloads and archives usually arrive nested several levels deep
 - **Responsive UI** — traversal and moves run on a worker thread; logs stream back through a queue with level-based colors (moved / conflict / skipped / error)
 - **Fault tolerant** — permission errors and locked files are logged and skipped; the batch continues
 - **HiDPI aware** — Per-Monitor V2 DPI awareness, plus DPI-scaled layout and fonts
+- **Bilingual UI** — Chinese / English; follows the Windows UI language on first launch and can be switched from the title bar at any time
 
 ## Requirements
 
@@ -38,7 +45,7 @@ Material packs, downloads and archives usually arrive nested several levels deep
 
 ## Getting started
 
-Download `DeepFolderFlattener-v1.3.0.exe` from [Releases](../../releases) and run it, or start from source:
+Download `DeepFolderFlattener-v1.4.0.exe` from [Releases](../../releases) and run it, or start from source:
 
 ```bash
 python main.py
@@ -71,10 +78,12 @@ The app refuses filesystem roots (e.g. `D:\`) as targets, since flattening an en
 
 ```
 .
-├── main.py            # entire application (single file)
-├── app_icon.ico       # multi-size application icon
+├── main.py               # entire application (single file)
+├── app_icon.ico          # multi-size application icon
 ├── docs/
-│   └── screenshot.png # UI screenshot
+│   ├── icon.png
+│   ├── screenshot-zh.png
+│   └── screenshot-en.png
 ├── LICENSE
 ├── .gitignore
 ├── README.md
@@ -100,6 +109,7 @@ pyinstaller --noconfirm --clean --onefile --windowed ^
 
 | Version | Changes |
 |---|---|
+| v1.4.0 | Bilingual UI (Chinese / English) with in-app switch; interface screenshots for both languages; MIT licensed and public |
 | v1.3.0 | Folder drag & drop; Canvas progress bar (fixes leftover green segment); long paths displayed from the start; new type scale and spacing; resizable window with content-aware sizing |
 | v1.2.0 | Delivery documentation, sample directory, stability fixes |
 | v1.1.0 | Collision protection, empty-directory cleanup, hidden-file option |

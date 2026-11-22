@@ -48,6 +48,180 @@ C_BAR_TROUGH = "#E2EDFD"  # 进度条轨道：比底色略深，保证可见但�
 BASE_WIDTH = 560   # 基准逻辑宽度（96 DPI 下）
 BASE_HEIGHT = 480  # 基准逻辑高度
 
+# ---------------------------------------------------------------------------
+# 多语言文案：zh = 简体中文，en = English
+# 默认跟随系统 UI 语言，可在标题栏右侧手动切换
+# ---------------------------------------------------------------------------
+I18N = {
+    "zh": {
+        "app_title": "深层子文件夹文件一键提取平铺工具",
+        "header_subtitle": "深层素材一键归集 · 自动重命名防覆盖 · 智能清理空目录",
+        "section_target": " 目标位置 ",
+        "section_options": " 运行选项 ",
+        "section_log": " 运行日志 ",
+        "label_root": "根文件夹",
+        "browse": " 浏览... ",
+        "opt_rename": "遇到重名文件自动重命名（原文件名_(1).扩展名，依次递增）",
+        "opt_cleanup": "提取完成后清理已掏空的子文件夹（仅删除空目录）",
+        "opt_hidden": "处理隐藏文件及隐藏子文件夹",
+        "start": "开始一键平铺提取",
+        "author": "作者: Ilana",
+        "lang_switch": "EN",
+        "status_ready": "就绪 · 请选择或直接把文件夹拖入窗口",
+        "status_running": "正在提取，请稍候……",
+        "status_done": "任务完成",
+        "status_failed": "任务异常终止",
+        "status_drop_running": "任务进行中，无法更换目标文件夹",
+        "status_drop_file": "请拖入文件夹，而不是文件",
+        "status_drop_invalid": "拖入内容无效",
+        "status_drop_ok": "已通过拖拽设置目标文件夹",
+        "dlg_notice_title": "提示",
+        "dlg_no_path": "请先选择目标根文件夹。",
+        "dlg_invalid_title": "路径无效",
+        "dlg_invalid_body": "所选文件夹不存在或不可访问，请重新选择。",
+        "dlg_root_title": "安全提示",
+        "dlg_root_body": "为避免误整理整个磁盘，请选择磁盘内的具体文件夹。",
+        "dlg_confirm_title": "确认执行平铺提取",
+        "dlg_confirm_body": (
+            "此操作会将所有子文件夹内的文件剪切移动至目标根目录，"
+            "原目录结构将被改变。\n\n建议在操作前备份重要数据。是否继续？"
+        ),
+        "dlg_close_title": "任务正在运行",
+        "dlg_close_body": "请等待当前提取任务完成后再关闭程序。",
+        "dlg_browse_title": "请选择目标根文件夹",
+        "dlg_done_body": "平铺提取任务已完成！",
+        "dlg_fail_title": "任务异常终止",
+        "dlg_fail_body": "发生严重异常：{err}",
+        "log_target": "目标根文件夹：{path}",
+        "log_started": "任务已启动，正在后台扫描并提取文件……",
+        "log_fatal": "[严重异常] 任务已终止：{err}",
+        "log_walk_error": "[异常] 无法访问目录 {path}：{err}",
+        "log_skip_link": "[跳过] 链接目录：{path}",
+        "log_skip_hidden_dir": "[跳过] 隐藏子文件夹：{path}",
+        "log_skip_hidden_file": "[跳过] 隐藏文件：{path}",
+        "log_skip_special": "[跳过] 非普通文件：{path}",
+        "log_move_failed": "[异常] 移动失败 {path}：{err}",
+        "log_process_failed": "[异常] 处理失败 {path}：{err}",
+        "log_finished": "文件提取任务执行完毕。",
+        "log_exists_skip": "[跳过] 根目录已存在同名文件：{name}",
+        "log_conflict": "[重名冲突] 已为文件寻找新名称：{name}",
+        "log_moved": "[已移动] {src}  ->  {dst}",
+        "log_race_skip": "[跳过] 同名文件竞争冲突：{name}",
+        "log_cleaned": "[已清理] 空文件夹：{path}",
+        "log_clean_failed": "[异常] 无法清理空文件夹 {path}：{err}",
+        "log_summary": "任务汇总：\n{body}",
+        "log_drop_running": "[拖拽] 任务运行中，已忽略本次拖入",
+        "log_drop_file": "[拖拽] 已忽略：拖入的是文件而非文件夹：{path}",
+        "log_drop_invalid": "[拖拽] 已忽略：无效的拖入项：{path}",
+        "log_drop_ok": "[拖拽] 已导入目标文件夹：{path} {note}",
+        "log_drop_root_warn": "[拖拽] 注意：拖入的是磁盘根目录，开始整理前会被安全检查拦截",
+        "drop_ignored_note": "（已忽略其余 {n} 项）",
+        "sum_scanned": "累计扫描文件数：{n}",
+        "sum_moved": "成功提取数：{n}",
+        "sum_conflicts": "重名冲突数：{n}",
+        "sum_cleaned": "清理空文件夹数：{n}",
+        "sum_skipped": "跳过项目数：{n}",
+        "sum_errors": "异常数：{n}",
+        "sum_elapsed": "耗时：{t:.2f} 秒",
+        "err_permission": "权限不足或文件正被其他程序占用；{err}",
+        "unknown_path": "未知路径",
+        "unknown": "未知",
+    },
+    "en": {
+        "app_title": "Deep Folder Flattener",
+        "header_subtitle": "Collect nested files · Never overwrite · Clean empty folders",
+        "section_target": " Target folder ",
+        "section_options": " Options ",
+        "section_log": " Log ",
+        "label_root": "Folder",
+        "browse": " Browse... ",
+        "opt_rename": "Auto-rename duplicates (name_(1).ext, increasing)",
+        "opt_cleanup": "Remove emptied subfolders afterwards (empty folders only)",
+        "opt_hidden": "Include hidden files and folders",
+        "start": "Start flattening",
+        "author": "Author: Ilana",
+        "lang_switch": "中文",
+        "status_ready": "Ready · Choose a folder or drag one into the window",
+        "status_running": "Working, please wait…",
+        "status_done": "Completed",
+        "status_failed": "Aborted due to an error",
+        "status_drop_running": "A task is running; target folder can't be changed",
+        "status_drop_file": "Please drop a folder, not a file",
+        "status_drop_invalid": "Unsupported drop content",
+        "status_drop_ok": "Target folder set by drag & drop",
+        "dlg_notice_title": "Notice",
+        "dlg_no_path": "Please select a target root folder first.",
+        "dlg_invalid_title": "Invalid path",
+        "dlg_invalid_body": "The selected folder does not exist or is not accessible.",
+        "dlg_root_title": "Safety check",
+        "dlg_root_body": "To avoid flattening an entire drive, pick a folder inside it.",
+        "dlg_confirm_title": "Confirm flattening",
+        "dlg_confirm_body": (
+            "This will move every file from the subfolders into the target root "
+            "and change the folder structure.\n\nBack up important data first. Continue?"
+        ),
+        "dlg_close_title": "Task running",
+        "dlg_close_body": "Please wait for the current task to finish before closing.",
+        "dlg_browse_title": "Select target root folder",
+        "dlg_done_body": "Flattening completed!",
+        "dlg_fail_title": "Task aborted",
+        "dlg_fail_body": "A fatal error occurred: {err}",
+        "log_target": "Target root: {path}",
+        "log_started": "Task started; scanning and moving files in the background…",
+        "log_fatal": "[FATAL] Task aborted: {err}",
+        "log_walk_error": "[ERROR] Cannot access folder {path}: {err}",
+        "log_skip_link": "[SKIP] Linked folder: {path}",
+        "log_skip_hidden_dir": "[SKIP] Hidden folder: {path}",
+        "log_skip_hidden_file": "[SKIP] Hidden file: {path}",
+        "log_skip_special": "[SKIP] Not a regular file: {path}",
+        "log_move_failed": "[ERROR] Move failed {path}: {err}",
+        "log_process_failed": "[ERROR] Processing failed {path}: {err}",
+        "log_finished": "Flattening finished.",
+        "log_exists_skip": "[SKIP] Same name already exists in root: {name}",
+        "log_conflict": "[CONFLICT] Finding a new name for: {name}",
+        "log_moved": "[MOVED] {src}  ->  {dst}",
+        "log_race_skip": "[SKIP] Name collision while moving: {name}",
+        "log_cleaned": "[CLEANED] Empty folder: {path}",
+        "log_clean_failed": "[ERROR] Cannot remove empty folder {path}: {err}",
+        "log_summary": "Summary:\n{body}",
+        "log_drop_running": "[DROP] A task is running; this drop was ignored",
+        "log_drop_file": "[DROP] Ignored: dropped item is a file, not a folder: {path}",
+        "log_drop_invalid": "[DROP] Ignored: unsupported item: {path}",
+        "log_drop_ok": "[DROP] Target folder set: {path} {note}",
+        "log_drop_root_warn": "[DROP] Note: this is a drive root and will be rejected by the safety check",
+        "drop_ignored_note": "({n} other item(s) ignored)",
+        "sum_scanned": "Files scanned: {n}",
+        "sum_moved": "Files moved: {n}",
+        "sum_conflicts": "Rename conflicts: {n}",
+        "sum_cleaned": "Empty folders removed: {n}",
+        "sum_skipped": "Items skipped: {n}",
+        "sum_errors": "Errors: {n}",
+        "sum_elapsed": "Elapsed: {t:.2f} s",
+        "err_permission": "Permission denied or file is in use; {err}",
+        "unknown_path": "unknown path",
+        "unknown": "unknown",
+    },
+}
+
+
+def detect_language():
+    """跟随系统 UI 语言：中文系统用中文，其余默认英文。"""
+    if os.name == "nt":
+        try:
+            import ctypes
+
+            lang_id = ctypes.windll.kernel32.GetUserDefaultUILanguage()
+            if (lang_id & 0x3FF) == 0x04:  # LANG_CHINESE
+                return "zh"
+            return "en"
+        except Exception:
+            pass
+    for key in ("LC_ALL", "LC_MESSAGES", "LANG"):
+        value = os.environ.get(key, "")
+        if value:
+            return "zh" if value.lower().startswith("zh") else "en"
+    return "en"
+
 
 def enable_windows_dpi_awareness():
     """启用 Windows 高 DPI 感知，从根源解决 tkinter 界面模糊问题。
@@ -236,7 +410,8 @@ class FlattenFilesApp:
     def __init__(self, root, scale=1.0):
         self.root = root
         self.scale = scale
-        self.root.title("深层子文件夹文件一键提取平铺工具")
+        self.lang = detect_language()  # 界面语言：默认跟随系统，可手动切换
+        self.root.title(self.tr("app_title"))
         # 允许用户手动调整窗口大小；初始尺寸在界面构建后按内容自动适配
         self.root.configure(bg="#F1F5F9")  # 浅灰画布底色，衬托白色卡片
         self.root.resizable(True, True)
@@ -251,9 +426,7 @@ class FlattenFilesApp:
         self.auto_rename_var = tk.BooleanVar(value=True)
         self.cleanup_var = tk.BooleanVar(value=True)
         self.include_hidden_var = tk.BooleanVar(value=False)
-        self.status_var = tk.StringVar(
-            value="就绪 · 请选择或直接把文件夹拖入窗口"
-        )
+        self.status_var = tk.StringVar(value=self.tr("status_ready"))
 
         self._setup_style()
         self._build_ui()
@@ -343,59 +516,69 @@ class FlattenFilesApp:
         main = ttk.Frame(self.root, padding=pad)
         main.pack(fill=tk.BOTH, expand=True)
 
-        # ---- 页头：标题 + 副标题，建立第一视觉层级 ----
+        # ---- 页头：标题 + 副标题 + 语言切换，建立第一视觉层级 ----
         header = ttk.Frame(main)
         header.pack(fill=tk.X, pady=(0, int(10 * self.scale)))
-        ttk.Label(
-            header, text="深层子文件夹文件一键提取平铺工具",
-            style="Title.TLabel",
-        ).pack(anchor=tk.W)
-        ttk.Label(
-            header,
-            text="深层素材一键归集 · 自动重命名防覆盖 · 智能清理空目录",
-            style="Subtitle.TLabel",
-        ).pack(anchor=tk.W, pady=(3, 0))
+
+        # 语言切换按钮：先占住右上角，再让标题左对齐
+        self.lang_button = ttk.Button(
+            header, text=self.tr("lang_switch"), width=5,
+            command=self._toggle_language,
+        )
+        self.lang_button.pack(side=tk.RIGHT, anchor=tk.N)
+
+        self.header_title = ttk.Label(
+            header, text=self.tr("app_title"), style="Title.TLabel"
+        )
+        self.header_title.pack(anchor=tk.W)
+        self.header_subtitle = ttk.Label(
+            header, text=self.tr("header_subtitle"), style="Subtitle.TLabel"
+        )
+        self.header_subtitle.pack(anchor=tk.W, pady=(3, 0))
 
         # ---- 卡片 1：目标位置 ----
-        path_frame = ttk.Labelframe(
-            main, text=" 目标位置 ", style="Card.TLabelframe", padding=int(12 * self.scale)
+        self.path_frame = ttk.Labelframe(
+            main, text=self.tr("section_target"), style="Card.TLabelframe",
+            padding=int(12 * self.scale),
         )
-        path_frame.pack(fill=tk.X)
-        row = ttk.Frame(path_frame, style="Card.TFrame")
+        self.path_frame.pack(fill=tk.X)
+        row = ttk.Frame(self.path_frame, style="Card.TFrame")
         row.pack(fill=tk.X)
-        ttk.Label(row, text="根文件夹", style="Card.TLabel").pack(side=tk.LEFT)
+        self.root_label = ttk.Label(row, text=self.tr("label_root"), style="Card.TLabel")
+        self.root_label.pack(side=tk.LEFT)
         self.path_entry = ttk.Entry(row, textvariable=self.path_var)
         self.path_entry.pack(
             side=tk.LEFT, fill=tk.X, expand=True, padx=(int(8 * self.scale), 0)
         )
         self.browse_button = ttk.Button(
-            row, text=" 浏览... ", width=int(9 * self.scale), command=self._browse_folder
+            row, text=self.tr("browse"), width=int(9 * self.scale),
+            command=self._browse_folder,
         )
         self.browse_button.pack(side=tk.LEFT, padx=(int(8 * self.scale), 0))
 
         # ---- 卡片 2：运行选项 ----
-        option_frame = ttk.Labelframe(
-            main, text=" 运行选项 ", style="Card.TLabelframe",
+        self.option_frame = ttk.Labelframe(
+            main, text=self.tr("section_options"), style="Card.TLabelframe",
             padding=int(12 * self.scale),
         )
-        option_frame.pack(fill=tk.X, pady=(int(12 * self.scale), 0))
+        self.option_frame.pack(fill=tk.X, pady=(int(12 * self.scale), 0))
         self.rename_check = ttk.Checkbutton(
-            option_frame,
-            text="遇到重名文件自动重命名（原文件名_(1).扩展名，依次递增）",
+            self.option_frame,
+            text=self.tr("opt_rename"),
             variable=self.auto_rename_var,
             style="Card.TCheckbutton",
         )
         self.rename_check.pack(anchor=tk.W)
         self.cleanup_check = ttk.Checkbutton(
-            option_frame,
-            text="提取完成后清理已掏空的子文件夹（仅删除空目录）",
+            self.option_frame,
+            text=self.tr("opt_cleanup"),
             variable=self.cleanup_var,
             style="Card.TCheckbutton",
         )
         self.cleanup_check.pack(anchor=tk.W, pady=(int(6 * self.scale), 0))
         self.hidden_check = ttk.Checkbutton(
-            option_frame,
-            text="处理隐藏文件及隐藏子文件夹",
+            self.option_frame,
+            text=self.tr("opt_hidden"),
             variable=self.include_hidden_var,
             style="Card.TCheckbutton",
         )
@@ -407,7 +590,7 @@ class FlattenFilesApp:
         bottom.pack(side=tk.BOTTOM, fill=tk.X)
         self.start_button = tk.Button(
             bottom,
-            text="开始一键平铺提取",
+            text=self.tr("start"),
             command=self._confirm_and_start,
             font=(FONT_FAMILY, int(round(10.5 * self.scale)), "bold"),
             bg=C_ACCENT,
@@ -424,7 +607,7 @@ class FlattenFilesApp:
 
         # 右下角小字署名：先占住右侧角落，再让进度区向左伸展填满剩余空间
         self.author_label = ttk.Label(
-            bottom, text="作者: Ilana", style="Author.TLabel"
+            bottom, text=self.tr("author"), style="Author.TLabel"
         )
         self.author_label.pack(side=tk.RIGHT, anchor=tk.S, padx=(int(8 * self.scale), 0))
 
@@ -443,13 +626,13 @@ class FlattenFilesApp:
         ).pack(anchor=tk.W, pady=(int(3 * self.scale), 0))
 
         # ---- 卡片 3：运行日志（占满剩余空间，窗口缩放时随之伸缩）----
-        log_frame = ttk.Labelframe(
-            main, text=" 运行日志 ", style="Card.TLabelframe",
+        self.log_frame = ttk.Labelframe(
+            main, text=self.tr("section_log"), style="Card.TLabelframe",
             padding=int(10 * self.scale),
         )
-        log_frame.pack(fill=tk.BOTH, expand=True, pady=(int(12 * self.scale), 0))
+        self.log_frame.pack(fill=tk.BOTH, expand=True, pady=(int(12 * self.scale), 0))
         self.log_text = ScrolledText(
-            log_frame,
+            self.log_frame,
             height=int(6 * self.scale) or 6,
             width=1,  # 宽度交给布局自适应拉伸，避免默认 80 字符宽度撑大窗口
             wrap=tk.WORD,
@@ -471,12 +654,55 @@ class FlattenFilesApp:
         self.log_text.tag_configure("info", foreground=C_LOG_INFO)
 
     # ------------------------------------------------------------------
+    # 多语言
+    # ------------------------------------------------------------------
+    def tr(self, key, **kwargs):
+        """取当前语言文案；缺失时回退中文，再回退键名。"""
+        table = I18N.get(self.lang, I18N["zh"])
+        text = table.get(key) or I18N["zh"].get(key, key)
+        return text.format(**kwargs) if kwargs else text
+
+    def _toggle_language(self):
+        """在中文与英文界面之间切换。"""
+        self.lang = "en" if self.lang == "zh" else "zh"
+        self._apply_language()
+
+    def _apply_language(self):
+        """刷新全部静态控件文案：不重建窗口，也不清空已有日志。"""
+        self.root.title(self.tr("app_title"))
+        self.lang_button.configure(text=self.tr("lang_switch"))
+        self.header_title.configure(text=self.tr("app_title"))
+        self.header_subtitle.configure(text=self.tr("header_subtitle"))
+        self.path_frame.configure(text=self.tr("section_target"))
+        self.root_label.configure(text=self.tr("label_root"))
+        self.browse_button.configure(text=self.tr("browse"))
+        self.option_frame.configure(text=self.tr("section_options"))
+        self.rename_check.configure(text=self.tr("opt_rename"))
+        self.cleanup_check.configure(text=self.tr("opt_cleanup"))
+        self.hidden_check.configure(text=self.tr("opt_hidden"))
+        self.log_frame.configure(text=self.tr("section_log"))
+        self.start_button.configure(text=self.tr("start"))
+        self.author_label.configure(text=self.tr("author"))
+        if not self.is_running:
+            self.status_var.set(self.tr("status_ready"))
+        # 英文文案通常更宽，切换后按内容需要扩展窗口（只放大、不缩小）
+        self.root.update_idletasks()
+        need_w = max(self.root.winfo_width(), self.root.winfo_reqwidth())
+        need_h = max(self.root.winfo_height(), self.root.winfo_reqheight())
+        if need_w > self.root.winfo_width() or need_h > self.root.winfo_height():
+            self.root.geometry(f"{need_w}x{need_h}")
+        self._append_log(
+            "Language switched to English." if self.lang == "en" else "已切换为中文界面。",
+            "info",
+        )
+
+    # ------------------------------------------------------------------
     # 交互动作
     # ------------------------------------------------------------------
     def _browse_folder(self):
         """调用 Windows 原生文件夹选择对话框。"""
         selected = filedialog.askdirectory(
-            parent=self.root, title="请选择目标根文件夹", mustexist=True
+            parent=self.root, title=self.tr("dlg_browse_title"), mustexist=True
         )
         if selected:
             self._apply_path(os.path.normpath(selected))
@@ -502,8 +728,8 @@ class FlattenFilesApp:
         if not paths:
             return
         if self.is_running:
-            self.status_var.set("任务进行中，无法更换目标文件夹")
-            self._append_log("[拖拽] 任务运行中，已忽略本次拖入", "warn")
+            self.status_var.set(self.tr("status_drop_running"))
+            self._append_log(self.tr("log_drop_running"), "warn")
             return
 
         folders, files, invalid = [], [], []
@@ -520,14 +746,17 @@ class FlattenFilesApp:
 
         if not folders:
             if files:
-                self.status_var.set("请拖入文件夹，而不是文件")
+                self.status_var.set(self.tr("status_drop_file"))
                 self._append_log(
-                    f"[拖拽] 已忽略：拖入的是文件而非文件夹：{files[0]}", "warn"
+                    self.tr("log_drop_file", path=files[0]), "warn"
                 )
             else:
-                self.status_var.set("拖入内容无效")
+                self.status_var.set(self.tr("status_drop_invalid"))
                 self._append_log(
-                    f"[拖拽] 已忽略：无效的拖入项：{invalid[0] if invalid else '未知'}",
+                    self.tr(
+                        "log_drop_invalid",
+                        path=invalid[0] if invalid else self.tr("unknown"),
+                    ),
                     "warn",
                 )
             return
@@ -535,16 +764,14 @@ class FlattenFilesApp:
         # 以第一个文件夹为目标，其余项忽略并说明数量
         target = folders[0]
         ignored = len(paths) - 1
-        note = f"（已忽略其余 {ignored} 项）" if ignored > 0 else ""
+        note = self.tr("drop_ignored_note", n=ignored) if ignored > 0 else ""
         normalized = os.path.normpath(os.path.abspath(target))
         self._apply_path(normalized)
-        self.status_var.set("已通过拖拽设置目标文件夹")
-        self._append_log(f"[拖拽] 已导入目标文件夹：{normalized} {note}", "info")
+        self.status_var.set(self.tr("status_drop_ok"))
+        self._append_log(self.tr("log_drop_ok", path=normalized, note=note), "info")
         # 磁盘根目录沿用现有的安全防线，此处仅提前给出直观提示
         if os.path.dirname(normalized) == normalized:
-            self._append_log(
-                "[拖拽] 注意：拖入的是磁盘根目录，开始整理前会被安全检查拦截", "warn"
-            )
+            self._append_log(self.tr("log_drop_root_warn"), "warn")
 
     def _confirm_and_start(self):
         """校验路径，并在用户明确确认后启动后台线程。"""
@@ -553,11 +780,15 @@ class FlattenFilesApp:
 
         raw_path = self.path_var.get().strip().strip('"')
         if not raw_path:
-            messagebox.showwarning("提示", "请先选择目标根文件夹。", parent=self.root)
+            messagebox.showwarning(
+                self.tr("dlg_notice_title"), self.tr("dlg_no_path"), parent=self.root
+            )
             return
         if not os.path.isdir(raw_path):
             messagebox.showerror(
-                "路径无效", "所选文件夹不存在或不可访问，请重新选择。", parent=self.root
+                self.tr("dlg_invalid_title"),
+                self.tr("dlg_invalid_body"),
+                parent=self.root,
             )
             return
 
@@ -565,16 +796,15 @@ class FlattenFilesApp:
         # 防止误选整个磁盘根目录，避免大规模整理系统或其他无关文件。
         if os.path.dirname(target_root) == target_root:
             messagebox.showwarning(
-                "安全提示",
-                "为避免误整理整个磁盘，请选择磁盘内的具体文件夹。",
+                self.tr("dlg_root_title"),
+                self.tr("dlg_root_body"),
                 parent=self.root,
             )
             return
 
         confirmed = messagebox.askokcancel(
-            "确认执行平铺提取",
-            "此操作会将所有子文件夹内的文件剪切移动至目标根目录，"
-            "原目录结构将被改变。\n\n建议在操作前备份重要数据。是否继续？",
+            self.tr("dlg_confirm_title"),
+            self.tr("dlg_confirm_body"),
             icon=messagebox.WARNING,
             parent=self.root,
         )
@@ -583,8 +813,8 @@ class FlattenFilesApp:
 
         self._set_running_state(True)
         self._clear_log()
-        self._append_log(f"目标根文件夹：{target_root}", "info")
-        self._append_log("任务已启动，正在后台扫描并提取文件……", "info")
+        self._append_log(self.tr("log_target", path=target_root), "info")
+        self._append_log(self.tr("log_started"), "info")
 
         options = {
             "auto_rename": self.auto_rename_var.get(),
@@ -619,7 +849,7 @@ class FlattenFilesApp:
         except Exception as exc:  # 最外层保险，具体文件异常已在内部单独处理
             fatal_error = str(exc)
             stats["errors"] += 1
-            self.event_queue.put(("log", "error", f"[严重异常] 任务已终止：{exc}"))
+            self.event_queue.put(("log", "error", self.tr("log_fatal", err=exc)))
         finally:
             elapsed = time.perf_counter() - started_at
             self.event_queue.put(("done", stats, elapsed, fatal_error))
@@ -631,8 +861,10 @@ class FlattenFilesApp:
 
         def on_walk_error(exc):
             stats["errors"] += 1
-            path = getattr(exc, "filename", "未知路径")
-            self.event_queue.put(("log", "error", f"[异常] 无法访问目录 {path}：{exc}"))
+            path = getattr(exc, "filename", self.tr("unknown_path"))
+            self.event_queue.put(
+                ("log", "error", self.tr("log_walk_error", path=path, err=exc))
+            )
 
         # topdown=True 可在进入子目录前过滤隐藏目录及链接目录。
         for current_dir, dir_names, file_names in os.walk(
@@ -647,11 +879,15 @@ class FlattenFilesApp:
                 # 不跟随符号链接/目录联接，避免越出目标根目录或产生循环。
                 if os.path.islink(dir_path):
                     stats["skipped"] += 1
-                    self.event_queue.put(("log", "skip", f"[跳过] 链接目录：{dir_path}"))
+                    self.event_queue.put(
+                        ("log", "skip", self.tr("log_skip_link", path=dir_path))
+                    )
                     continue
                 if not include_hidden and self._is_hidden(dir_path):
                     stats["skipped"] += 1
-                    self.event_queue.put(("log", "skip", f"[跳过] 隐藏子文件夹：{dir_path}"))
+                    self.event_queue.put(
+                        ("log", "skip", self.tr("log_skip_hidden_dir", path=dir_path))
+                    )
                     continue
                 kept_dirs.append(dir_name)
             dir_names[:] = kept_dirs
@@ -662,12 +898,16 @@ class FlattenFilesApp:
                 try:
                     if not include_hidden and self._is_hidden(source_path):
                         stats["skipped"] += 1
-                        self.event_queue.put(("log", "skip", f"[跳过] 隐藏文件：{source_path}"))
+                        self.event_queue.put(
+                            ("log", "skip", self.tr("log_skip_hidden_file", path=source_path))
+                        )
                         continue
                     # 只处理普通文件，跳过链接、设备或其他特殊项目。
                     if not os.path.isfile(source_path) or os.path.islink(source_path):
                         stats["skipped"] += 1
-                        self.event_queue.put(("log", "skip", f"[跳过] 非普通文件：{source_path}"))
+                        self.event_queue.put(
+                            ("log", "skip", self.tr("log_skip_special", path=source_path))
+                        )
                         continue
                     # 根目录已有文件无需移动，但仍计入累计扫描文件数。
                     if os.path.normpath(current_dir) == os.path.normpath(target_root):
@@ -677,17 +917,19 @@ class FlattenFilesApp:
                     stats["errors"] += 1
                     self.event_queue.put(
                         ("log", "error",
-                         f"[异常] 移动失败 {source_path}：{self._friendly_error(exc)}")
+                         self.tr("log_move_failed", path=source_path,
+                                 err=self._friendly_error(exc)))
                     )
                 except Exception as exc:
                     stats["errors"] += 1
                     self.event_queue.put(
-                        ("log", "error", f"[异常] 处理失败 {source_path}：{exc}")
+                        ("log", "error",
+                         self.tr("log_process_failed", path=source_path, err=exc))
                     )
 
         if options["cleanup"]:
             self._cleanup_empty_dirs(visited_dirs, stats)
-        self.event_queue.put(("log", "info", "文件提取任务执行完毕。"))
+        self.event_queue.put(("log", "info", self.tr("log_finished")))
 
     def _move_one_file(self, source_path, target_root, options, stats):
         """移动单个文件，并依据选项严格避免覆盖任何现有文件。"""
@@ -700,14 +942,14 @@ class FlattenFilesApp:
                 if not options["auto_rename"]:
                     stats["skipped"] += 1
                     self.event_queue.put(
-                        ("log", "skip", f"[跳过] 根目录已存在同名文件：{file_name}")
+                        ("log", "skip", self.tr("log_exists_skip", name=file_name))
                     )
                     return
                 if not conflict_counted:
                     stats["conflicts"] += 1
                     conflict_counted = True
                 self.event_queue.put(
-                    ("log", "warn", f"[重名冲突] 已为文件寻找新名称：{file_name}")
+                    ("log", "warn", self.tr("log_conflict", name=file_name))
                 )
                 destination = self._next_available_name(destination)
                 continue
@@ -718,7 +960,7 @@ class FlattenFilesApp:
                 os.rename(source_path, destination)
                 stats["moved"] += 1
                 self.event_queue.put(
-                    ("log", "ok", f"[已移动] {source_path}  ->  {destination}")
+                    ("log", "ok", self.tr("log_moved", src=source_path, dst=destination))
                 )
                 return
             except FileExistsError:
@@ -726,7 +968,7 @@ class FlattenFilesApp:
                 if not options["auto_rename"]:
                     stats["skipped"] += 1
                     self.event_queue.put(
-                        ("log", "skip", f"[跳过] 同名文件竞争冲突：{file_name}")
+                        ("log", "skip", self.tr("log_race_skip", name=file_name))
                     )
                     return
                 if not conflict_counted:
@@ -752,7 +994,9 @@ class FlattenFilesApp:
             try:
                 os.rmdir(dir_path)  # 非空目录会失败，因此不会误删其中任何文件
                 stats["cleaned"] += 1
-                self.event_queue.put(("log", "ok", f"[已清理] 空文件夹：{dir_path}"))
+                self.event_queue.put(
+                    ("log", "ok", self.tr("log_cleaned", path=dir_path))
+                )
             except OSError as exc:
                 # 目录非空属于正常情况；目录已不存在则无需重复处理。
                 if exc.errno in (errno.ENOTEMPTY, errno.EEXIST) or getattr(
@@ -764,7 +1008,8 @@ class FlattenFilesApp:
                 stats["errors"] += 1
                 self.event_queue.put(
                     ("log", "error",
-                     f"[异常] 无法清理空文件夹 {dir_path}：{self._friendly_error(exc)}")
+                     self.tr("log_clean_failed", path=dir_path,
+                             err=self._friendly_error(exc)))
                 )
 
     @staticmethod
@@ -785,11 +1030,10 @@ class FlattenFilesApp:
                 return False
         return False
 
-    @staticmethod
-    def _friendly_error(exc):
+    def _friendly_error(self, exc):
         """为常见权限、占用错误补充易读说明，同时保留原始错误信息。"""
         if isinstance(exc, PermissionError):
-            return f"权限不足或文件正被其他程序占用；{exc}"
+            return self.tr("err_permission", err=exc)
         return str(exc)
 
     # ------------------------------------------------------------------
@@ -811,25 +1055,29 @@ class FlattenFilesApp:
     def _on_task_done(self, stats, elapsed, fatal_error):
         """恢复控件、停止进度动画并展示汇总结果。"""
         self._set_running_state(False)
-        self.status_var.set("任务完成" if fatal_error is None else "任务异常终止")
-        summary = (
-            f"累计扫描文件数：{stats['scanned']}\n"
-            f"成功提取数：{stats['moved']}\n"
-            f"重名冲突数：{stats['conflicts']}\n"
-            f"清理空文件夹数：{stats['cleaned']}\n"
-            f"跳过项目数：{stats['skipped']}\n"
-            f"异常数：{stats['errors']}\n"
-            f"耗时：{elapsed:.2f} 秒"
+        self.status_var.set(
+            self.tr("status_done") if fatal_error is None else self.tr("status_failed")
         )
-        self._append_log("任务汇总：\n" + summary, "info")
+        summary = "\n".join([
+            self.tr("sum_scanned", n=stats["scanned"]),
+            self.tr("sum_moved", n=stats["moved"]),
+            self.tr("sum_conflicts", n=stats["conflicts"]),
+            self.tr("sum_cleaned", n=stats["cleaned"]),
+            self.tr("sum_skipped", n=stats["skipped"]),
+            self.tr("sum_errors", n=stats["errors"]),
+            self.tr("sum_elapsed", t=elapsed),
+        ])
+        self._append_log(self.tr("log_summary", body=summary), "info")
         if fatal_error is None:
             messagebox.showinfo(
-                "Success", "平铺提取任务已完成！\n\n" + summary, parent=self.root
+                "Success",
+                self.tr("dlg_done_body") + "\n\n" + summary,
+                parent=self.root,
             )
         else:
             messagebox.showerror(
-                "任务异常终止",
-                f"发生严重异常：{fatal_error}\n\n" + summary,
+                self.tr("dlg_fail_title"),
+                self.tr("dlg_fail_body", err=fatal_error) + "\n\n" + summary,
                 parent=self.root,
             )
 
@@ -844,10 +1092,11 @@ class FlattenFilesApp:
             self.cleanup_check,
             self.hidden_check,
             self.start_button,
+            self.lang_button,
         ):
             widget.configure(state=state)
         if running:
-            self.status_var.set("正在提取，请稍候……")
+            self.status_var.set(self.tr("status_running"))
             self.progress.start(16)
         else:
             # 停止动画并清空填充，避免空闲时残留进度色块
@@ -870,7 +1119,9 @@ class FlattenFilesApp:
         """任务进行中阻止直接关闭，避免后台移动过程被突然中断。"""
         if self.is_running:
             messagebox.showwarning(
-                "任务正在运行", "请等待当前提取任务完成后再关闭程序。", parent=self.root
+                self.tr("dlg_close_title"),
+                self.tr("dlg_close_body"),
+                parent=self.root,
             )
             return
         # 退出前还原默认窗口过程并取消拖放注册，防止关闭时崩溃

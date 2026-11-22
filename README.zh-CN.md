@@ -8,9 +8,15 @@
 
 一个 Windows 桌面小工具：把多层嵌套文件夹里的文件**一键剪切到根目录摊平**，重名自动改名不覆盖，顺手清理被掏空的子目录。
 
-基于 Python 3 + tkinter，**仅使用标准库**，无第三方依赖、不联网。
+基于 Python 3 + tkinter，**仅使用标准库**，无第三方依赖、不联网。界面支持**中文 / English** 双语。
 
-![界面预览](docs/screenshot.png)
+<p align="center">
+  <img src="docs/icon.png" width="96" alt="应用图标">
+</p>
+
+| 中文界面 | English UI |
+|---|---|
+| ![中文界面](docs/screenshot-zh.png) | ![English UI](docs/screenshot-en.png) |
 
 ## 为什么需要它
 
@@ -26,6 +32,7 @@
 - **界面不卡顿**：遍历与移动在工作线程执行，日志经队列回传并按级别着色（成功 / 重名 / 跳过 / 异常）
 - **异常隔离**：权限不足、文件被占用等问题记录日志后继续，不中断整体任务
 - **高分屏适配**：启用 Per-Monitor V2 DPI 感知，布局与字号按 DPI 缩放
+- **中英双语**：默认跟随 Windows 系统语言，标题栏右侧可随时切换
 
 ## 环境要求
 
@@ -37,7 +44,7 @@
 
 ## 快速开始
 
-从 [Releases](../../releases) 下载 `DeepFolderFlattener-v1.3.0.exe` 直接运行，或从源码启动：
+从 [Releases](../../releases) 下载 `DeepFolderFlattener-v1.4.0.exe` 直接运行，或从源码启动：
 
 ```bash
 python main.py
@@ -70,10 +77,12 @@ python main.py
 
 ```
 .
-├── main.py            # 全部源码（单文件）
-├── app_icon.ico       # 应用图标（多尺寸）
+├── main.py               # 全部源码（单文件）
+├── app_icon.ico          # 应用图标（多尺寸）
 ├── docs/
-│   └── screenshot.png # 界面截图
+│   ├── icon.png
+│   ├── screenshot-zh.png
+│   └── screenshot-en.png
 ├── LICENSE
 ├── .gitignore
 ├── README.md
@@ -99,6 +108,7 @@ pyinstaller --noconfirm --clean --onefile --windowed ^
 
 | 版本 | 变更 |
 |---|---|
+| v1.4.0 | 界面支持中英双语（标题栏可切换，默认跟随系统）；补充双语界面截图；采用 MIT 协议并公开仓库 |
 | v1.3.0 | 新增文件夹拖拽导入；Canvas 自绘进度条（修复空闲残留绿块）；长路径从开头显示；字号层级与间距重排；窗口可缩放并自适应内容 |
 | v1.2.0 | 补全交付文档、示例目录，稳定性修复 |
 | v1.1.0 | 重名保护、空目录清理、隐藏项选项 |
